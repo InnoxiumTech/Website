@@ -11,7 +11,9 @@ const input = require("./content/markdown.md");
 ReactDOM.render(
   <React.StrictMode>
       <NavBar />
+      <div className={"contentDiv"}>
       <MarkdownPane input={input}/>
+      </div>
       {/*<App />*/}
   </React.StrictMode>,
   document.getElementById('root')

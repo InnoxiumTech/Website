@@ -1,6 +1,6 @@
-const React = require("react");
-const ReactMarkdown = require("react-markdown")
-require("./Markdown.module.sass");
+import styles from "./Markdown.module.sass";
+import React from "react";
+import ReactMarkdown from "react-markdown";
 
 export class MarkdownPane extends React.Component {
 
@@ -22,7 +22,7 @@ export class MarkdownPane extends React.Component {
         const { content } = this.state;
 
         return (
-            <div className={"markdown"}>
+            <div className={styles.markdown}>
                 <ReactMarkdown source={content}/>
             </div>
         )

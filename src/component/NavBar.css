@@ -1,0 +1,30 @@
+.navBar {
+
+    display: inline;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+    background: rgba(38,38,38,0.67);
+}
+
+.navBarItem {
+
+    background: rgba(2,0,38,0.67);
+    border-left: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    font-size: larger;
+    color: ghostwhite;
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    float: right;
+}
+
+ul {
+
+    list-style-type: none;
+    overflow: hidden;
+}

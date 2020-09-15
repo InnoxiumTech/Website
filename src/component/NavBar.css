@@ -1,8 +1,8 @@
 .navBar {
 
-    display: inline;
-    position: fixed;
-    width: 100%;
+    display: flex;
+    position: relative;
+    /*width: 100%;*/
     top: 0;
     overflow: hidden;
     background: rgba(38,38,38,0.67);
@@ -22,9 +22,15 @@
     padding: 10px;
     float: right;
 }
+.navBarItem:first-child {
+
+    border-right: 1px solid #bbb;
+}
 
 ul {
 
     list-style-type: none;
     overflow: hidden;
+    margin-left: auto;
+    margin-right: 10px;
 }

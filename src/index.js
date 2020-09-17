@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {BrowserRouter as Router, Route} from "react-router-dom"
 import { NavBar } from './component/NavBar.js';
 import { MarkdownPane } from './component/MarkdownPane.js';
 import * as serviceWorker from './serviceWorker';
@@ -10,10 +10,14 @@ const input = require("./content/markdown.md");
 
 ReactDOM.render(
   <React.StrictMode>
-      <NavBar />
-      <div className={"contentDiv"}>
-      <MarkdownPane input={input}/>
-      </div>
+      <Router>
+          <div className={"navBarDiv"}>
+              <NavBar />
+          </div>
+          <switch>
+              <Route exact path={"/"} component={MarkdownPane}/>
+          </switch>
+      </Router>
       {/*<App />*/}
   </React.StrictMode>,
   document.getElementById('root')

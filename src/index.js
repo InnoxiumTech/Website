@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import { NavBar } from './component/NavBar.js';
-import { MarkdownPane } from './component/MarkdownPane.js';
+import MarkdownPane from './component/MarkdownPane.js';
 import * as serviceWorker from './serviceWorker';
 
 const input = require("./content/markdown.md");
@@ -15,7 +15,7 @@ ReactDOM.render(
               <NavBar />
           </div>
           <switch>
-              <Route exact path={"/"} component={MarkdownPane}/>
+              <Route exact path={"/about"} component={() => <MarkdownPane input={input} />}/>
           </switch>
       </Router>
       {/*<App />*/}

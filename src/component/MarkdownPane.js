@@ -2,7 +2,7 @@ import styles from "./Markdown.module.sass";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-export class MarkdownPane extends React.Component {
+export default class MarkdownPane extends React.Component {
 
     state = {
 

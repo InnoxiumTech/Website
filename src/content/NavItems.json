@@ -1,0 +1,23 @@
+[
+  {
+    "isLink": true,
+    "title": "Home",
+    "page": "",
+    "markdownPage": false,
+    "markdownContent": ""
+  },
+  {
+    "isLink": true,
+    "title": "Projects",
+    "page": "projects",
+    "markdownPage": true,
+    "markdownContent": "content/features.md"
+  },
+  {
+    "isLink": true,
+    "title": "About",
+    "page": "about",
+    "markdownPage": true,
+    "markdownContent": "content/about.md"
+  }
+]

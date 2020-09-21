@@ -1,32 +1,7 @@
 import React from 'react';
 import styles from './NavBar.module.sass'
 import {Link} from "react-router-dom";
-
-const navbarItems = [
-
-    {
-        isLink: true,
-        title: "Home",
-        page: "home",
-    },
-    {
-        isLink: true,
-        title: "Projects",
-        page: "projects",
-    },
-    {
-        isLink: true,
-        title: "About",
-        page: "about",
-    }
-].reverse();
-
-const navBarList = navbarItems.map((item) => (
-
-    <li key={item.page} className={styles.navBarItem}>
-        <Link to={"/" + item.page}>{item.title}</Link>
-    </li>
-));
+import navItems from '../content/NavItems.json'
 
 export class NavBar extends React.Component {
 
@@ -37,7 +12,16 @@ export class NavBar extends React.Component {
             <div className={styles.navBarDiv}>
                 <img className={styles.logo} src={"./logo_transparent.svg"} alt={"Innoxium Tech"} />
                 <nav className={styles.navBar}>
-                    <ul className={styles.navUl}>{navBarList}</ul>
+                    <ul className={styles.navUl}>
+                        {
+                            navItems.reverse().map((item, index) => (
+
+                                <li key={index} className={styles.navBarItem}>
+                                    <Link to={"/" + item.page}>{item.title}</Link>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </nav>
             </div>
         );

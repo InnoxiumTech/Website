@@ -4,20 +4,23 @@
     "title": "Home",
     "page": "",
     "markdownPage": false,
-    "markdownContent": ""
+    "markdownContent": "",
+    "pageContentComponent": "component/page/HomePage.js"
   },
   {
     "isLink": true,
-    "title": "Projects",
-    "page": "projects",
+    "title": "Features",
+    "page": "features",
     "markdownPage": true,
-    "markdownContent": "content/features.md"
+    "markdownContent": "content/features.md",
+    "pageContentComponent": ""
   },
   {
     "isLink": true,
     "title": "About",
     "page": "about",
     "markdownPage": true,
-    "markdownContent": "content/about.md"
+    "markdownContent": "content/about.md",
+    "pageContentComponent": ""
   }
 ]

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
@@ -15,26 +15,38 @@ const routes = navItems.map((item, index) => (
 
 ReactDOM.render(
   <React.StrictMode>
-      <Router>
-          <div className={"navBarDiv"}>
-              <NavBar />
-          </div>
-          <Switch>
-              {routes}
-          </Switch>
-      </Router>
+          <Router>
+              <div className={"navBarDiv"}>
+                  <NavBar />
+              </div>
+              <Switch>
+                  {routes}
+              </Switch>
+          </Router>
       {/*<App />*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
 
+// Gets all routes from our valid json file
 function getRouteFromItem(item, index) {
 
+    // Is the page a markdown page?
     const isMarkdown = item.markdownPage;
+    // init variables
     let content = null;
-    if (isMarkdown) content = require("./" + item.markdownContent);
-    let component = isMarkdown ? () => <MarkdownPane input={content}/> : () => <MarkdownPane input={input}/>
+    let Page = null; // Page is a component, not a standard variable
+    if (isMarkdown) {
+        // import the markdown page
+        content = require("./" + item.markdownContent);
+    } else {
+        // Or import the page as a component
+        Page = React.lazy(() => import("./" + item.pageContentComponent));
+    }
+    // Define the component
+    let component = isMarkdown ? () => <MarkdownPane input={content}/> : () => <Suspense fallback={<p>Loading...</p>}><Page/></Suspense>
 
+    // Return our route
     return (<Route key={index} exact path={"/" + item.page} component = {component}/>)
 }
 

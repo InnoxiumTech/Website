@@ -2,12 +2,13 @@ import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import { NavBar } from './component/NavBar.js';
+import NavBar from './component/NavBar.js';
 import MarkdownPane from './component/MarkdownPane.js';
+import Footer from "./component/Footer.js"
 import * as serviceWorker from './serviceWorker';
 import navItems from './content/NavItems.json'
 
-const input = require("./content/markdown.md");
+// const input = require("./content/markdown.md");
 
 const routes = navItems.map((item, index) => (
     getRouteFromItem(item, index))
@@ -15,14 +16,15 @@ const routes = navItems.map((item, index) => (
 
 ReactDOM.render(
   <React.StrictMode>
-          <Router>
-              <div className={"navBarDiv"}>
-                  <NavBar />
-              </div>
+      <Router>
+          <Suspense fallback={<p>Loading...</p>}>
+              <NavBar />
               <Switch>
                   {routes}
               </Switch>
-          </Router>
+              <Footer />
+          </Suspense>
+      </Router>
       {/*<App />*/}
   </React.StrictMode>,
   document.getElementById('root')
@@ -36,15 +38,23 @@ function getRouteFromItem(item, index) {
     // init variables
     let content = null;
     let Page = null; // Page is a component, not a standard variable
+    let component;
     if (isMarkdown) {
         // import the markdown page
         content = require("./" + item.markdownContent);
+        component = () => <MarkdownPane input={content}/>;
+    } else if(item.isOutLink) {
+
+        component = () => {
+            window.location.href = item.outLink
+            return null
+        }
     } else {
         // Or import the page as a component
         Page = React.lazy(() => import("./" + item.pageContentComponent));
+        component = () => <Suspense fallback={<p>Loading...</p>}><Page/></Suspense>;
     }
     // Define the component
-    let component = isMarkdown ? () => <MarkdownPane input={content}/> : () => <Suspense fallback={<p>Loading...</p>}><Page/></Suspense>
 
     // Return our route
     return (<Route key={index} exact path={"/" + item.page} component = {component}/>)

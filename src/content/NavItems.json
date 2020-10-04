@@ -1,6 +1,6 @@
 [
   {
-    "isLink": true,
+    "isOutLink": false,
     "title": "Home",
     "page": "",
     "markdownPage": false,
@@ -8,7 +8,7 @@
     "pageContentComponent": "component/page/HomePage.js"
   },
   {
-    "isLink": true,
+    "isLink": false,
     "title": "Features",
     "page": "features",
     "markdownPage": true,
@@ -16,11 +16,20 @@
     "pageContentComponent": ""
   },
   {
-    "isLink": true,
+    "isLink": false,
     "title": "About",
     "page": "about",
     "markdownPage": true,
     "markdownContent": "content/about.md",
     "pageContentComponent": ""
+  },
+  {
+    "isOutLink": true,
+    "title": "Download",
+    "page": "download",
+    "markdownPage": false,
+    "markdownContent": "",
+    "pageContentComponent": "",
+    "outLink": "https://innoxium.itch.io/candor-mod-manager"
   }
 ]

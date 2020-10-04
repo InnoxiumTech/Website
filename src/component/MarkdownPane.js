@@ -1,10 +1,10 @@
 import styles from "./Markdown.module.sass";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import '../../node_modules/highlight.js/styles/atom-one-dark-reasonable.css'
 var hljs = require("highlight.js");
 var md = require("markdown-it")({
     // langPrefix: "",
+    html: true,
 
     highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
